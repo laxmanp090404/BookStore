@@ -1,0 +1,79 @@
+import React from 'react';
+import BookView from './BookView';
+function BookCard({ book, isSelected, onView }) {
+  const { imageUrl, title, author, rating, price, language,bookId } = book;
+
+  return (
+    <div>
+      <div
+        className="card  hover:shadow-2xl shadow-cyan-400 bg-gradient-to-r from-cyan-300 to-blue-300 border-2 h-[35rem] w-[23rem] px-9 py-4 rounded-xl   active:scale-95 shadow-lg cursor-pointer ease-out duration-500 flex flex-col justify-center"
+      >
+        <img src={imageUrl} alt={title} className="w-[400px]  h-[350px] rounded-xl z-50" />
+        <h2 className='md:text-xl text-md font-bold self-center mt-1'>{title}</h2>
+
+        <div className="flex justify-between">
+          <div className="flex flex-col space-y-2 mt-5">
+            <h2 className='text-blue-950 font-bold md:text-md lg:text-md xl:text-md text-lg flex items-center gap-1'><UserIcon className="w-4 h-4 text-blue-900 " />
+<span>{author}</span></h2>
+            <h2 className='flex items-center gap-1'><StarIcon className=" w-4 h-4 fill-yellow-300 text-yellow-400" /><span className='font-bold'>{rating}</span></h2>
+          </div>
+          <div className="flex flex-col gap-3 mt-5 font-bold">
+           
+            <h2>₹ {price}</h2>
+            <h2>{language}</h2>
+          </div>
+        </div>
+        <button className="bg-yellow-400 bg-opacity-90 rounded-xl p-2 border-b-4 active:scale-95 duration-500 border-yellow-600 mt-2 text-[rgb(54,28,12)] font-mono font-extrabold hover:bg-yellow-500 hover:text-white" onClick={onView}>
+          View
+        </button>
+      </div>
+      {isSelected && (
+        <div className="book-view">
+          {/* Additional details can be shown here or passed down */}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default BookCard;
+
+
+function StarIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
+function UserIcon(props) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}

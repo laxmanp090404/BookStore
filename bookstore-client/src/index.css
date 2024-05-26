@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.poetsen-one-regular {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .poppins-thin {
+    font-family: "Poppins", sans-serif;
+   font-style: normal;
+  }
+  
+  /* HTML: <div class="loader"></div>
+.loader {
+  width: 10rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 10px solid;
+  border-color: #05c2fc #0000;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
+ */
+
+.example {
+  overflow-y: scroll; /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: rotate(45deg);
+  overflow: hidden;
+}
+.loader:after{
+  content: '';
+  position: absolute;
+  inset: 6rem;
+  margin: auto;
+  background: #222b32;
+}
+.loader:before{
+  content: '';
+  position: absolute;
+  inset: -7rem;
+  margin: auto;
+  background: #de3500;
+  animation: diamondLoader 2s linear infinite;
+}
+@keyframes diamondLoader {
+  0%  ,10% {
+    transform: translate(-10rem , -10rem) rotate(-45deg)
+  }
+  90% , 100% {
+    transform: translate(0px , 0px) rotate(-45deg)
+  }
+}
+
+.satisfy-regular {
+  font-family: "Satisfy", cursive;
+  font-weight: 900;
+  font-style: normal;
+}
+.freeman-regular {
+  font-family: "Freeman", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
