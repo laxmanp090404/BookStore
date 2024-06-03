@@ -22,7 +22,7 @@ const Signup = () => {
 
     const handleSignUp = async () => {
         try {
-            const res = await axios.post(`${import.meta.env.VITE_SERVER}/createuser`, {
+            const res = await axios.post(`api/createuser`, {
                 username,
                 email,
                 password,
@@ -50,19 +50,19 @@ const Signup = () => {
             <section className="bg-gray-50 min-h-screen flex items-center justify-center">
                 <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 -mt-20">
                     <div className="md:w-1/2 px-16">
-                        <h2 className="font-bold text-2xl text-[#f57309]">SignUp</h2>
+                        <h2 className="font-bold text-2xl text-[#1c329e]">SignUp</h2>
                         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                             <input
                                 type="text"
                                 placeholder="Username"
-                                className="outline-none focus-within:border-orange-800 focus-within:bg-orange-200 placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309]"
+                                className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#1c329e]"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                             <input
                                 type="email"
                                 placeholder="Email"
-                                className="outline-none focus-within:border-orange-800 focus-within:bg-orange-200 placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309]"
+                                className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#1c329e]"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -72,7 +72,7 @@ const Signup = () => {
                                     name="password"
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="Password"
-                                    className="outline-none focus-within:border-orange-800 focus-within:bg-orange-200 placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309] w-full"
+                                    className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#1c329e] w-full"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -94,12 +94,12 @@ const Signup = () => {
         value={role}
         onChange={(e)=>setRole(e.target.value)}
         required
-        className='outline-none focus-within:border-orange-800  placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309] w-full '
+        className='outline-none focus-within:border-blue-800  placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#1c329e] w-full '
       >
         <option value="user">User</option>
         <option value="admin">Admin</option>
       </select>
-                            <button type="submit" className="bg-[#f57309] rounded-xl text-white py-2">Signup</button>
+                            <button type="submit" className="bg-[#1c329e] rounded-xl text-white py-2">Signup</button>
                         </form>
                         <div className="text-xs mt-4 flex justify-between items-center font-bold">
                             <p>Have an account?</p>

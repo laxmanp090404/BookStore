@@ -15,7 +15,7 @@ const Cart = () => {
 
   const handleClearCart = async () => {
     try {
-      const response = await axios.get(import.meta.env.VITE_SERVER + "/clearcart");
+      const response = await axios.get("/api/clearcart");
       const res = response.data;
       if (res.cleared) {
         toast.success(res.message);
@@ -34,7 +34,7 @@ const Cart = () => {
   useEffect(() => {
     const getCart = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/cart`);
+        const response = await axios.get(`/api/cart`);
         setCart(response.data.items);
         setLoading(false);
         const total = response.data.items.reduce((acc, item) => acc + (item.book.price * item.quantity), 0);
@@ -66,7 +66,7 @@ const Cart = () => {
             </div>
           }
         </div>
-        <div className='checkoutdiv w-[450px] h-[300px] space-y-3 border-2 rounded-lg p-8 border-orange-300 z-10 shadow-2xl'>
+        <div className='checkoutdiv w-[450px] h-[300px] space-y-3 border-2 rounded-lg p-8 border-blue-300 z-10 shadow-2xl'>
           <p className='text-xl w-full'>Order Summary</p>
           <div className='orderdetails1 flex justify-between'>
             <p>Total Items</p>
@@ -76,8 +76,8 @@ const Cart = () => {
             <p>Total Price</p>
             <p>Rs.{price}</p>
           </div>
-          <button className='bg-orange-500 hover:bg-orange-400 duration-200 p-2 w-full rounded-lg text-white' onClick={handleClearCart}>Clear Cart</button>
-          <button className='bg-white border-2 border-orange-600 p-2 w-full duration-200 hover:bg-orange-100 rounded-lg text-orange-600'>Proceed to Checkout</button>
+          <button className='bg-blue-500 hover:bg-blue-400 duration-200 p-2 w-full rounded-lg text-white' onClick={handleClearCart}>Clear Cart</button>
+          <button className='bg-white border-2 border-blue-600 p-2 w-full duration-200 hover:bg-blue-100 rounded-lg text-blue-600'>Proceed to Checkout</button>
         </div>
       </div>
     </>

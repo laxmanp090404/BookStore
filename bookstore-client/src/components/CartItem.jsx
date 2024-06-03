@@ -12,7 +12,7 @@ const CartItem = ({ details, quantity, setPrice }) => {
   const removeItemFromCart = async () => {
     try {
       if (quantvar > 0) {
-        const res = await axios.delete(`${import.meta.env.VITE_SERVER}/removeitem/${_id}`);
+        const res = await axios.delete(`/api/removeitem/${_id}`);
         if (res.status === 200) {
           dispatch(removeItem(_id));
           setQuantVar(prevQuant => prevQuant - 1);
@@ -30,7 +30,7 @@ const CartItem = ({ details, quantity, setPrice }) => {
 
   const addToCart = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_SERVER}/addtocart`, { bookId: _id, quantity: 1 });
+      const res = await axios.post(`/api/addtocart`, { bookId: _id, quantity: 1 });
       if (res.status === 200) {
         dispatch(addItem({ id: _id, quantity: 1, price }));
         setQuantVar(prevQuant => prevQuant + 1);
@@ -55,14 +55,14 @@ const CartItem = ({ details, quantity, setPrice }) => {
       {
         quantvar==0?<>
         </>:<>
-        <div className='cartitemcard flex gap-10 w-full mb-5 p-5 rounded-xl cursor-pointer border-2 border-orange-300 items-center'>
+        <div className='cartitemcard flex gap-10 w-full mb-5 p-5 rounded-xl cursor-pointer border-2 border-blue-300 items-center'>
         <div>
           <img src={imageUrl} className='w-[25vh] h-[30vh] rounded-lg shadow-xl' alt={title} />
         </div>
         <div className="aligntry flex justify-between w-full">
           <div className="details">
             <div className='text-2xl font-bold'>{title}</div>
-            <div className='text-orange-400 text-xl'>{author}</div>
+            <div className='text-blue-400 text-xl'>{author}</div>
             <div className='font-extrabold text-xl my-2'>Rs.{price}</div>
           </div>
           <div className='flex space-x-5 items-center'>

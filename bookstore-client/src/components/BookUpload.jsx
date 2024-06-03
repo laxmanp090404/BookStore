@@ -72,7 +72,7 @@ const BookUpload = () => {
 
         if(role == "admin"){
           const response = await axios.post(
-            `${import.meta.env.VITE_SERVER}/createbook`,
+            `/api/createbook`,
             updatedFormData
           );
           console.log('success');
@@ -114,17 +114,17 @@ const BookUpload = () => {
   };
 
   return (
-    <div className='flex justify-center min-h-screen'>
+    <div className='flex justify-center min-h-screen bg-[url("")] bg-cover bg-no-repeat'>
       <Toaster /> 
-      <div className='m-10 h-fit bg-white border border-orange-200 p-6 rounded-lg md:text-xl md:w-[600px]'>
+      <div className='m-10 h-fit bg-white border border-blue-200 p-6 rounded-lg md:text-xl md:w-[600px]'>
         <form onSubmit={handleSubmit} className='flex flex-col space-y-4'>
-          <input required type='text' placeholder='Title' className="px-3.5 border-2 rounded-lg w-full h-[5vh]" name='title' value={formData.title} onChange={handleChange}/>
-          <input required type='text' placeholder='Author' className="px-3.5 border-2 rounded-lg w-full h-[5vh]" name="author" value={formData.author} onChange={handleChange} />
-          <input required type='number' placeholder='Price' className="px-3.5 border-2 rounded-lg w-full h-[5vh]" name='price' pattern="[0-9]*" min={0}  value={formData.price} onChange={handleChange}/>
-          <input required type='text' name='language' placeholder='Language' className="px-3.5 border-2 rounded-lg w-full h-[5vh]" value={formData.language} onChange={handleChange}/>
-          <input required type='file' className='file:rounded-xl file:bg-orange-300 file:border-transparent file:text-white file:cursor-pointer' onChange={(e) => { setImage(e.target.files[0]) }}/>
-          <textarea required value={formData.description} placeholder="Description" className="px-3.5 border-2 rounded-lg w-full" name='description' onChange={handleChange} rows={4}/>
-          <button type='submit' className='bg-orange-400 text-white p-2 rounded-3xl border-b-4 border-orange-700 active:scale-105 duration-300 ease-out hover:bg-orange-600'>Submit</button>
+          <input required type='text' placeholder='Title' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full"name='title' value={formData.title} onChange={handleChange}/>
+          <input required type='text' placeholder='Author' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name="author" value={formData.author} onChange={handleChange} />
+          <input required type='number' placeholder='Price' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='price' pattern="[0-9]*" min={0}  value={formData.price} onChange={handleChange}/>
+          <input required type='text' name='language' placeholder='Language' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" value={formData.language} onChange={handleChange}/>
+          <input required type='file' className='file:rounded-xl file:bg-blue-300 file:border-transparent file:text-white file:cursor-pointer' onChange={(e) => { setImage(e.target.files[0]) }}/>
+          <textarea required value={formData.description} placeholder="Description" className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='description' onChange={handleChange} rows={4}/>
+          <button type='submit' className='bg-blue-400 text-white p-2 rounded-3xl border-b-4 border-blue-700 active:scale-105 duration-300 ease-out hover:bg-blue-600'>Submit</button>
         </form>
       </div>
     </div>

@@ -11,8 +11,9 @@ const Header = () => {
   const [cookie, setCookie] = useState(null);
   const user = useSelector((store) => store.user.details);
   const login = useSelector((store) => store.user.login);
-  
   const quant = useSelector((store)=> store.cart.totalQuantity)
+  const [cartquant,setcartQuant] = useState(quant);
+
   const dispatch = useDispatch();
   const nav = useNavigate();
 
@@ -20,7 +21,7 @@ const Header = () => {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/getuser`, { withCredentials: true });
+        const response = await axios.get(`/api/getuser`, { withCredentials: true });
         setCookie(response.data.cookies);
         if (response.data.cookies.token) {
           dispatch(addUser(response.data.user));
@@ -33,7 +34,7 @@ const Header = () => {
 
     const getCartDetails = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/cart`, { withCredentials: true });
+        const response = await axios.get(`/api/cart`, { withCredentials: true });
         dispatch(updateCartQuantity(response.data.totalQuantity));
         setcartQuant(response.data.totalQuantity)
         
@@ -58,7 +59,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_SERVER}/logout`, {
+      const response = await fetch(`/api/logout`, {
         method: 'POST',
         credentials: 'include',
       });
@@ -76,10 +77,10 @@ const Header = () => {
     }
   };
 
-  return (
+  return (  
     <>
       <Toaster />
-      <header className='flex justify-between items-center px-3 border-b-3 border-[#080b37]'>
+      <header className='flex justify-between items-center px-3 border-b-3 border-[#080b37] header'>
         <div className='logo font-bold text-3xl flex items-center'>
           <Link to={'/'}>
             <img
@@ -95,44 +96,44 @@ const Header = () => {
 
         <nav className='webrel list-none md:flex w-1/5 md:justify-between xl: lg:text-xl md:text-md sm:text-[10px] hidden'>
           <Link to={'/'}>
-            <li className='flex flex-col gap-1 justify-center items-center'>
+            <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150 '>
               <span>Home</span>
             </li>
           </Link>
           <Link to={'/home'}>
-            <li className='flex flex-col gap-1 justify-center items-center rounded-xl'>
+            <li className='flex flex-col gap-1 justify-center items-center  border-b-4 border-transparent hover:border-blue-700 duration-150'>
               <span>Books</span>
             </li>
           </Link>
           <Link to={'/contact'}>
-            <li className='flex flex-col gap-1 justify-center items-center'>
+            <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150'>
               <span>Contact</span>
             </li>
           </Link>
         </nav>
 
         <nav className='prof list-none flex w-[180px] justify-between relative'>
-          <Link to={'/cart'}>
-            <li className='flex flex-col gap-1 justify-center items-center'>
-              <span>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth='1.5'
-                  stroke='currentColor'
-                  className='w-8 h-8'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
-                  />
-                </svg>
-              </span>
-              <span>{quant}</span>
-            </li>
-          </Link>
+        <Link to={'/cart'}>
+  <li className='flex flex-col gap-1 justify-center items-center'>
+    <span className='relative'>  <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        strokeWidth='1.5'
+        stroke='currentColor'
+        className='w-8 h-8'
+      >
+        <path
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
+        />
+      </svg>
+      <span className='absolute top-0 right-0 text-xs font-bold bg-blue-500 text-white px-1 rounded-full'>  {cartquant}
+      </span>
+    </span>
+  </li>
+</Link>
           <Link>
             <li className='flex gap-2 text-xl justify-center items-center duration-300' onClick={() => { setShowMenu(!showMenu); }}>
               <span>

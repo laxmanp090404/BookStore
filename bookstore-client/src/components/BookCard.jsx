@@ -6,12 +6,12 @@ function BookCard({ book, isSelected, onView }) {
   return (
     <div>
       <div
-        className="card  hover:shadow-2xl shadow-cyan-400 bg-gradient-to-r from-cyan-300 to-blue-300 border-2 h-[35rem] w-[23rem] px-9 py-4 rounded-xl   active:scale-95 shadow-lg cursor-pointer ease-out duration-500 flex flex-col justify-center"
+        className="card  hover:shadow-lg shadow-cyan-400 pb-3  border-2 h-[30rem] w-[20rem] mx-9 my-4 rounded-xl   active:scale-95 shadow-none cursor-pointer ease-out duration-500 flex flex-col justify-center"
       >
-        <img src={imageUrl} alt={title} className="w-[400px]  h-[350px] rounded-xl z-50" />
+        <img src={imageUrl} alt={title} className="w-[full]  h-[300px] rounded-t-xl z-50" />
         <h2 className='md:text-xl text-md font-bold self-center mt-1'>{title}</h2>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between px-5 py-2">
           <div className="flex flex-col space-y-2 mt-5">
             <h2 className='text-blue-950 font-bold md:text-md lg:text-md xl:text-md text-lg flex items-center gap-1'><UserIcon className="w-4 h-4 text-blue-900 " />
 <span>{author}</span></h2>
@@ -23,13 +23,13 @@ function BookCard({ book, isSelected, onView }) {
             <h2>{language}</h2>
           </div>
         </div>
-        <button className="bg-yellow-400 bg-opacity-90 rounded-xl p-2 border-b-4 active:scale-95 duration-500 border-yellow-600 mt-2 text-[rgb(54,28,12)] font-mono font-extrabold hover:bg-yellow-500 hover:text-white" onClick={onView}>
+        <button className="bg-yellow-400 m-2 bg-opacity-90 rounded-xl p-2 border-b-4 active:scale-95 duration-500 border-yellow-600 mt-2 text-[rgb(54,28,12)] font-mono font-extrabold hover:bg-yellow-500 hover:text-white" onClick={onView}>
           View
         </button>
       </div>
       {isSelected && (
         <div className="book-view">
-          {/* Additional details can be shown here or passed down */}
+         
         </div>
       )}
     </div>

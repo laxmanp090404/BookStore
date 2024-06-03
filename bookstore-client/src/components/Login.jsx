@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_SERVER}/loginuser`, {
+      const res = await axios.post(`/api/loginuser`, {
         email,
         password,
       }, {
@@ -57,13 +57,13 @@ const Login = () => {
       <section className="bg-gray-50 min-h-screen flex items-center justify-center">
         <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 -mt-20">
           <div className="md:w-1/2 px-16">
-            <h2 className="font-bold text-2xl text-[#f57309]">Login</h2>
-            <h3 className="text-sm mt-4 text-[#f57309]">If already a member please login</h3>
+            <h2 className="font-bold text-2xl text-[#2528d2]">Login</h2>
+            <h3 className="text-sm mt-4 text-[#2528d2]">If already a member please login</h3>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="outline-none focus-within:border-orange-800 focus-within:bg-orange-200 placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309]"
+                className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff]"
                 type="email"
                 placeholder="Email"
               />
@@ -74,7 +74,7 @@ const Login = () => {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="outline-none focus-within:border-orange-800 focus-within:bg-orange-200 placeholder-orange-300 focus-within:placeholder-orange-600 duration-200 p-2 mt-8 rounded-xl border text-[#f57309] w-full"
+                  className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full"
                   placeholder="Password"
                 />
                 <svg
@@ -90,7 +90,7 @@ const Login = () => {
                   <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
                 </svg>
               </div>
-              <button type="submit" className="bg-[#f57309] rounded-xl text-white py-2">
+              <button type="submit" className="bg-[#2736ff] rounded-xl text-white py-2">
                 Login
               </button>
             </form>
