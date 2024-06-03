@@ -25,7 +25,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(`/api/loginuser`, {
+      const res = await axios.post(import.meta.env.VITE_SERVER+`/api/loginuser`, {
         email,
         password,
       }, {
