@@ -12,8 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  //for authentication
-  axios.defaults.baseURL = '/';
+  // Set Axios default base URL to the environment variable
+  axios.defaults.baseURL = import.meta.env.VITE_SERVER;
   axios.defaults.withCredentials = true;
   
   const handleshowPassword = () => {
