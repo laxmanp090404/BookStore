@@ -12,6 +12,7 @@ const Login = () => {
   const dispatch = useDispatch();
   
   //for authentication
+  axios.defaults.baseURL = '/';
   axios.defaults.withCredentials=true;
   const handleshowPassword = () => {
     setShowPassword((prevState) => !prevState);
