@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { addUser, loginState } from '../Slices/UserSlice';
-import axios from 'axios'
+import axios from 'axios';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +14,8 @@ const Login = () => {
   
   //for authentication
   axios.defaults.baseURL = '/';
-  axios.defaults.withCredentials=true;
+  axios.defaults.withCredentials = true;
+  
   const handleshowPassword = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -25,7 +27,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(import.meta.env.VITE_SERVER+`/api/loginuser`, {
+      const res = await axios.post('/api/loginuser', {
         email,
         password,
       }, {
@@ -52,6 +54,7 @@ const Login = () => {
       toast.error('An error occurred. Please try again.');
     }
   };
+  
   return (
     <>
       <Toaster />
