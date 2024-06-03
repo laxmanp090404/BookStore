@@ -13,7 +13,6 @@ const Login = () => {
   const dispatch = useDispatch();
   
   // Set Axios default base URL to the environment variable
-  axios.defaults.baseURL = import.meta.env.VITE_SERVER;
   axios.defaults.withCredentials = true;
   
   const handleshowPassword = () => {
@@ -27,7 +26,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('/api/loginuser', {
+      const res = await axios.post(import.meta.env.VITE_SERVER+'/api/loginuser', {
         email,
         password,
       }, {
