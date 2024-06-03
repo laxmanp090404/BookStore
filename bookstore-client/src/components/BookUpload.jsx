@@ -72,7 +72,11 @@ const BookUpload = () => {
 
         if(role == "admin"){
           const response = await axios.post(
+<<<<<<< HEAD
             import.meta.env.VITE_SERVER+`/api/createbook`,
+=======
+            `/api/createbook`,
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
             updatedFormData
           );
           console.log('success');

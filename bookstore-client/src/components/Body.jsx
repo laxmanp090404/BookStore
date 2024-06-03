@@ -15,7 +15,11 @@ const Body = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
+<<<<<<< HEAD
         const fetchedData = await axios.get(import.meta.env.VITE_SERVER+`/api/getbooks`);
+=======
+        const fetchedData = await axios.get(`/api/getbooks`);
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         setBooks(fetchedData.data);
         setLoading(false);
       } catch (error) {

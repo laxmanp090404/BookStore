@@ -15,7 +15,11 @@ const Cart = () => {
 
   const handleClearCart = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get(import.meta.env.VITE_SERVER+"/api/clearcart");
+=======
+      const response = await axios.get("/api/clearcart");
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
       const res = response.data;
       if (res.cleared) {
         toast.success(res.message);

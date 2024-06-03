@@ -22,7 +22,11 @@ const Signup = () => {
 
     const handleSignUp = async () => {
         try {
+<<<<<<< HEAD
             const res = await axios.post(import.meta.env.VITE_SERVER+`/api/createuser`, {
+=======
+            const res = await axios.post(`api/createuser`, {
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
                 username,
                 email,
                 password,

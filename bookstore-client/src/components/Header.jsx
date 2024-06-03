@@ -21,7 +21,11 @@ const Header = () => {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(import.meta.env.VITE_SERVER+`/api/getuser`, { withCredentials: true });
+=======
+        const response = await axios.get(`/api/getuser`, { withCredentials: true });
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         setCookie(response.data.cookies);
         if (response.data.cookies.token) {
           dispatch(addUser(response.data.user));
@@ -34,7 +38,11 @@ const Header = () => {
 
     const getCartDetails = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(import.meta.env.VITE_SERVER+`/api/cart`, { withCredentials: true });
+=======
+        const response = await axios.get(`/api/cart`, { withCredentials: true });
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         dispatch(updateCartQuantity(response.data.totalQuantity));
         setcartQuant(response.data.totalQuantity)
         
@@ -59,7 +67,11 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
+<<<<<<< HEAD
       const response = await fetch(import.meta.env.VITE_SERVER+`/api/logout`, {
+=======
+      const response = await fetch(`/api/logout`, {
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         method: 'POST',
         credentials: 'include',
       });

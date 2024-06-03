@@ -12,7 +12,11 @@ const CartItem = ({ details, quantity, setPrice }) => {
   const removeItemFromCart = async () => {
     try {
       if (quantvar > 0) {
+<<<<<<< HEAD
         const res = await axios.delete(import.meta.env.VITE_SERVER+`/api/removeitem/${_id}`);
+=======
+        const res = await axios.delete(`/api/removeitem/${_id}`);
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         if (res.status === 200) {
           dispatch(removeItem(_id));
           setQuantVar(prevQuant => prevQuant - 1);
@@ -30,7 +34,11 @@ const CartItem = ({ details, quantity, setPrice }) => {
 
   const addToCart = async () => {
     try {
+<<<<<<< HEAD
       const res = await axios.post(import.meta.env.VITE_SERVER+`/api/addtocart`, { bookId: _id, quantity: 1 });
+=======
+      const res = await axios.post(`/api/addtocart`, { bookId: _id, quantity: 1 });
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
       if (res.status === 200) {
         dispatch(addItem({ id: _id, quantity: 1, price }));
         setQuantVar(prevQuant => prevQuant + 1);

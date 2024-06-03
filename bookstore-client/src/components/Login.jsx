@@ -26,7 +26,11 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+<<<<<<< HEAD
       const res = await axios.post(import.meta.env.VITE_SERVER+'/api/loginuser', {
+=======
+      const res = await axios.post(`/api/loginuser`, {
+>>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         email,
         password,
       }, {
