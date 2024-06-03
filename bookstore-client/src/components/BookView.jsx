@@ -13,7 +13,7 @@ function BookView({ book, selectedBook }) {
 
   const addToCart = async () => {
     try {
-      const res = await axios.post(`/api/addtocart`, {
+      const res = await axios.post(import.meta.env.VITE_SERVER+`/api/addtocart`, {
         bookId: book._id,
         quantity: 1
       });

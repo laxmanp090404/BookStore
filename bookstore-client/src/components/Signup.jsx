@@ -22,7 +22,7 @@ const Signup = () => {
 
     const handleSignUp = async () => {
         try {
-            const res = await axios.post(`api/createuser`, {
+            const res = await axios.post(import.meta.env.VITE_SERVER+`/api/createuser`, {
                 username,
                 email,
                 password,

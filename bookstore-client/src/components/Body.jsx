@@ -15,7 +15,7 @@ const Body = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const fetchedData = await axios.get(`/api/getbooks`);
+        const fetchedData = await axios.get(import.meta.env.VITE_SERVER+`/api/getbooks`);
         setBooks(fetchedData.data);
         setLoading(false);
       } catch (error) {

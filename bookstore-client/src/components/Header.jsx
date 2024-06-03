@@ -21,7 +21,7 @@ const Header = () => {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        const response = await axios.get(`/api/getuser`, { withCredentials: true });
+        const response = await axios.get(import.meta.env.VITE_SERVER+`/api/getuser`, { withCredentials: true });
         setCookie(response.data.cookies);
         if (response.data.cookies.token) {
           dispatch(addUser(response.data.user));
@@ -34,7 +34,7 @@ const Header = () => {
 
     const getCartDetails = async () => {
       try {
-        const response = await axios.get(`/api/cart`, { withCredentials: true });
+        const response = await axios.get(import.meta.env.VITE_SERVER+`/api/cart`, { withCredentials: true });
         dispatch(updateCartQuantity(response.data.totalQuantity));
         setcartQuant(response.data.totalQuantity)
         
@@ -59,7 +59,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`/api/logout`, {
+      const response = await fetch(import.meta.env.VITE_SERVER+`/api/logout`, {
         method: 'POST',
         credentials: 'include',
       });

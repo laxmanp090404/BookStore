@@ -72,7 +72,7 @@ const BookUpload = () => {
 
         if(role == "admin"){
           const response = await axios.post(
-            `/api/createbook`,
+            import.meta.env.VITE_SERVER+`/api/createbook`,
             updatedFormData
           );
           console.log('success');

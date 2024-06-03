@@ -15,7 +15,7 @@ const Cart = () => {
 
   const handleClearCart = async () => {
     try {
-      const response = await axios.get("/api/clearcart");
+      const response = await axios.get(import.meta.env.VITE_SERVER+"/api/clearcart");
       const res = response.data;
       if (res.cleared) {
         toast.success(res.message);
