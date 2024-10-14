@@ -93,15 +93,13 @@ exports.removeItem = async (req, res) => {
       return res.status(400).json({ message: 'Item not found in cart' });
     }
 
-    // Reduce the quantity by 1
     cart.items[itemIndex].quantity -= 1;
 
-    // Remove the item if the quantity is 0
     if (cart.items[itemIndex].quantity === 0) {
       cart.items.splice(itemIndex, 1);
     }
 
-    // Save the updated cart
+  
     await cart.save();
 
     res.status(200).json({ message: 'Item updated successfully', cart });

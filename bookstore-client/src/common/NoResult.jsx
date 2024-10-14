@@ -16,11 +16,11 @@ export const NoResult= () => {
       />
     </div>
     <div className="max-w-md space-y-2">
-      <h2 className="text-4xl font-bold tracking-tight text-[#060740]">No results found</h2>
+      {/* <h2 className="text-4xl font-bold tracking-tight text-[#060740]">No results found</h2>
       <p className="text-gray-600">We couldn't find what you searched for.</p>
       <button className="mt-4" variant="secondary">
         Try searching again
-      </button>
+      </button> */}
     </div>
   </div>
   );

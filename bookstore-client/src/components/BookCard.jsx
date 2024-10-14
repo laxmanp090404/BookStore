@@ -4,9 +4,9 @@ function BookCard({ book, isSelected, onView }) {
   const { imageUrl, title, author, rating, price, language,bookId } = book;
 
   return (
-    <div>
+    <div className='rounded-xl '>
       <div
-        className="card  hover:shadow-lg shadow-cyan-400 pb-3  border-2 h-[30rem] w-[20rem] mx-9 my-4 rounded-xl   active:scale-95 shadow-none cursor-pointer ease-out duration-500 flex flex-col justify-center"
+        className="card border-r-[20px] border-b-[5px] border-opacity-50  border-[#a2a2a2]  pb-4  hover:shadow-lg shadow-cyan-400    h-[31rem] w-[22rem]  mx-9 my-4 rounded-xl   active:scale-95 shadow-none cursor-pointer ease-out duration-500 flex flex-col justify-center"
       >
         <img src={imageUrl} alt={title} className="w-[full]  h-[300px] rounded-t-xl z-50" />
         <h2 className='md:text-xl text-md font-bold self-center mt-1'>{title}</h2>
@@ -23,7 +23,7 @@ function BookCard({ book, isSelected, onView }) {
             <h2>{language}</h2>
           </div>
         </div>
-        <button className="bg-yellow-400 m-2 bg-opacity-90 rounded-xl p-2 border-b-4 active:scale-95 duration-500 border-yellow-600 mt-2 text-[rgb(54,28,12)] font-mono font-extrabold hover:bg-yellow-500 hover:text-white" onClick={onView}>
+        <button className="bg-yellow-400 m-2 bg-opacity-90 rounded-xl p-2 border-b-4 active:scale-95 duration-500 border-yellow-600  text-[rgb(54,28,12)] font-mono font-extrabold hover:bg-yellow-500 hover:text-white" onClick={onView}>
           View
         </button>
       </div>

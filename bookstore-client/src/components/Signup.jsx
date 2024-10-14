@@ -22,11 +22,7 @@ const Signup = () => {
 
     const handleSignUp = async () => {
         try {
-<<<<<<< HEAD
-            const res = await axios.post(import.meta.env.VITE_SERVER+`/api/createuser`, {
-=======
             const res = await axios.post(`api/createuser`, {
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
                 username,
                 email,
                 password,
@@ -44,7 +40,7 @@ const Signup = () => {
             }
         } catch (error) {
             console.error('An error occurred:', error);
-            toast.error('An error occurred. Please try again.');
+            toast.error(error.response.data.message);
         }
     };
 

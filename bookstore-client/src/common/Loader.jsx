@@ -2,8 +2,14 @@ import React from 'react'
 
 const Loader = () => {
   return (
-    <div className='min-h-[100vh] flex items-center justify-center'>
-        <div className='loader '></div>
+    <div class="min-h-screen flex items-center justify-center">
+       <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-content">
+            <img src="/assets/summa.jpeg" alt="Loading Image"/>
+            <p className='text-xl md:text-2xl '>Loading</p>
+        </div>
+    </div>
     </div>
   )
 }

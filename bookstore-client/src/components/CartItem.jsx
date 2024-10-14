@@ -3,20 +3,16 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addItem, removeItem } from '../Slices/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
-const CartItem = ({ details, quantity, setPrice }) => {
+const CartItem = ({ details, quantity, setPrice ,setLength,length}) => {
   const { _id, title, imageUrl, author, price } = details;
   const [quantvar, setQuantVar] = useState(quantity);
   const dispatch = useDispatch();
-
   const removeItemFromCart = async () => {
     try {
       if (quantvar > 0) {
-<<<<<<< HEAD
-        const res = await axios.delete(import.meta.env.VITE_SERVER+`/api/removeitem/${_id}`);
-=======
         const res = await axios.delete(`/api/removeitem/${_id}`);
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         if (res.status === 200) {
           dispatch(removeItem(_id));
           setQuantVar(prevQuant => prevQuant - 1);
@@ -24,6 +20,9 @@ const CartItem = ({ details, quantity, setPrice }) => {
           toast.success('Item removed from cart successfully');
         } else {
           toast.error("Item is already empty");
+        }
+        if(quantvar === 1){
+            setLength(length-1);
         }
       }
     } catch (error) {
@@ -34,11 +33,7 @@ const CartItem = ({ details, quantity, setPrice }) => {
 
   const addToCart = async () => {
     try {
-<<<<<<< HEAD
-      const res = await axios.post(import.meta.env.VITE_SERVER+`/api/addtocart`, { bookId: _id, quantity: 1 });
-=======
       const res = await axios.post(`/api/addtocart`, { bookId: _id, quantity: 1 });
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
       if (res.status === 200) {
         dispatch(addItem({ id: _id, quantity: 1, price }));
         setQuantVar(prevQuant => prevQuant + 1);
@@ -63,7 +58,7 @@ const CartItem = ({ details, quantity, setPrice }) => {
       {
         quantvar==0?<>
         </>:<>
-        <div className='cartitemcard flex gap-10 w-full mb-5 p-5 rounded-xl cursor-pointer border-2 border-blue-300 items-center'>
+        <div className='cartitemcard flex flex-col md:flex-row gap-10 w-full mb-5 p-5 rounded-xl cursor-pointer border-2 border-blue-300 items-center'>
         <div>
           <img src={imageUrl} className='w-[25vh] h-[30vh] rounded-lg shadow-xl' alt={title} />
         </div>

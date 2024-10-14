@@ -72,11 +72,7 @@ const BookUpload = () => {
 
         if(role == "admin"){
           const response = await axios.post(
-<<<<<<< HEAD
-            import.meta.env.VITE_SERVER+`/api/createbook`,
-=======
             `/api/createbook`,
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
             updatedFormData
           );
           console.log('success');
@@ -122,12 +118,12 @@ const BookUpload = () => {
       <Toaster /> 
       <div className='m-10 h-fit bg-white border border-blue-200 p-6 rounded-lg md:text-xl md:w-[600px]'>
         <form onSubmit={handleSubmit} className='flex flex-col space-y-4'>
-          <input required type='text' placeholder='Title' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full"name='title' value={formData.title} onChange={handleChange}/>
-          <input required type='text' placeholder='Author' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name="author" value={formData.author} onChange={handleChange} />
-          <input required type='number' placeholder='Price' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='price' pattern="[0-9]*" min={0}  value={formData.price} onChange={handleChange}/>
-          <input required type='text' name='language' placeholder='Language' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" value={formData.language} onChange={handleChange}/>
+          <input required type='text' placeholder='Title' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full"name='title' value={formData.title} maxLength={30} onChange={handleChange}/>
+          <input required type='text' placeholder='Author' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name="author" value={formData.author} maxLength={20} onChange={handleChange} />
+          <input required type='number' placeholder='Price' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='price' pattern="[0-9]*" min={0}  max={1500} value={formData.price} onChange={handleChange}/>
+          <input required type='text' name='language' placeholder='Language' className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" value={formData.language} maxLength={20} onChange={handleChange}/>
           <input required type='file' className='file:rounded-xl file:bg-blue-300 file:border-transparent file:text-white file:cursor-pointer' onChange={(e) => { setImage(e.target.files[0]) }}/>
-          <textarea required value={formData.description} placeholder="Description" className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='description' onChange={handleChange} rows={4}/>
+          <textarea required value={formData.description} placeholder="Description" className="outline-none focus-within:border-blue-800 focus-within:bg-blue-200 placeholder-blue-300 focus-within:placeholder-blue-600 duration-200 p-2 mt-8 rounded-xl border text-[#2736ff] w-full" name='description' maxLength={200} onChange={handleChange} rows={4}/>
           <button type='submit' className='bg-blue-400 text-white p-2 rounded-3xl border-b-4 border-blue-700 active:scale-105 duration-300 ease-out hover:bg-blue-600'>Submit</button>
         </form>
       </div>

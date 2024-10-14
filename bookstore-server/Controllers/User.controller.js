@@ -12,12 +12,10 @@ exports.getUser = async (req, res) => {
       return res.status(401).json({ message: "Not authenticated" });
     }
 
-    // Verify the token to get the user ID
     const decodedToken = jwt.verify(cookies.token, process.env.JWT_SECRET);
     const userId = decodedToken.userId;
 
-    // Fetch user details from the database using the user ID
-    const user = await UserModel.findById(userId).select('-password'); // Exclude the password field
+    const user = await UserModel.findById(userId).select('-password'); 
 
     res.json({ cookies, user });
   } catch (error) {

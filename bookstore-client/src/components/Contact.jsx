@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Contact = () => {
   return (
     <>
-      <section className="bg-[#0077B6] text-white py-20 md:py-32">
+      <section className="bg-[#041438] text-white py-20 md:py-32">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
@@ -17,7 +17,7 @@ const Contact = () => {
                     Name
                   </label>
                   <input
-                    className="bg-[#0066B3] border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
+                    className="bg-[#093e67] border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
                     id="name"
                     placeholder="Enter your name"
                     type="text"
@@ -28,7 +28,7 @@ const Contact = () => {
                     Email
                   </label>
                   <input
-                    className="bg-[#0066B3] border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
+                    className="bg-[#093e67]  border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
                     id="email"
                     placeholder="Enter your email"
                     type="email"
@@ -39,14 +39,14 @@ const Contact = () => {
                     Message
                   </label>
                   <textarea
-                    className="bg-[#0066B3] border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
+                    className="bg-[#093e67] border-none rounded-md py-3 px-4 w-full focus:ring-2 focus:ring-white focus:outline-none"
                     id="message"
                     placeholder="Enter your message"
                     rows={4}
                   />
                 </div>
                 <button
-                  className="bg-white text-[#0077B6] font-medium rounded-md py-3 px-6 hover:bg-[#0066B3] hover:text-white transition-colors"
+                  className="bg-white text-[#041438] font-medium rounded-md py-3 px-6 hover:bg-[#c1e4ff]  transition-colors"
                   type="submit"
                 >
                   Submit

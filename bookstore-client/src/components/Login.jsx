@@ -26,11 +26,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-<<<<<<< HEAD
-      const res = await axios.post(import.meta.env.VITE_SERVER+'/api/loginuser', {
-=======
       const res = await axios.post(`/api/loginuser`, {
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         email,
         password,
       }, {
@@ -49,12 +45,12 @@ const Login = () => {
           navigate('/');
         }, 2000);
       } else {
-        console.error('Login failed:', result);
-        toast.error(result.message || 'Login failed. Please try again.');
+        console.error('Login failed:', error);
+        toast.error(error.response.message || 'Login failed. Please try again.');
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      toast.error('An error occurred. Please try again.');
+      toast.error(error.response.data.message);
     }
   };
   

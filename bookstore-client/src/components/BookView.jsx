@@ -13,11 +13,7 @@ function BookView({ book, selectedBook }) {
 
   const addToCart = async () => {
     try {
-<<<<<<< HEAD
-      const res = await axios.post(import.meta.env.VITE_SERVER+`/api/addtocart`, {
-=======
       const res = await axios.post(`/api/addtocart`, {
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         bookId: book._id,
         quantity: 1
       });

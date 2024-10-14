@@ -12,6 +12,8 @@ import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import Cart from './components/Cart.jsx';
 import Contact from './components/Contact.jsx';
+import Checkout from './components/Checkout.jsx';
+import EditBook from './components/EditBook.jsx';
 
 
 
@@ -49,7 +51,14 @@ const appRouter = createBrowserRouter([
     {
       path: "/contact",
       element: <Contact />
-    }]
+    },
+  {
+    path:"/checkout",
+    element:<Checkout/>
+  },{
+    path:"/editbook/:id",
+    element:<EditBook/>
+  }]
   }
 ])
 

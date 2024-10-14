@@ -11,21 +11,16 @@ const Header = () => {
   const [cookie, setCookie] = useState(null);
   const user = useSelector((store) => store.user.details);
   const login = useSelector((store) => store.user.login);
-  const quant = useSelector((store)=> store.cart.totalQuantity)
-  const [cartquant,setcartQuant] = useState(quant);
+  const quant = useSelector((store)=> store.cart.totalQuantity);
+  const [cartquant, setCartQuant] = useState(quant);
 
   const dispatch = useDispatch();
   const nav = useNavigate();
 
-  // Fetch user details and cart details on component mount
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-<<<<<<< HEAD
-        const response = await axios.get(import.meta.env.VITE_SERVER+`/api/getuser`, { withCredentials: true });
-=======
         const response = await axios.get(`/api/getuser`, { withCredentials: true });
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         setCookie(response.data.cookies);
         if (response.data.cookies.token) {
           dispatch(addUser(response.data.user));
@@ -38,14 +33,9 @@ const Header = () => {
 
     const getCartDetails = async () => {
       try {
-<<<<<<< HEAD
-        const response = await axios.get(import.meta.env.VITE_SERVER+`/api/cart`, { withCredentials: true });
-=======
         const response = await axios.get(`/api/cart`, { withCredentials: true });
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         dispatch(updateCartQuantity(response.data.totalQuantity));
-        setcartQuant(response.data.totalQuantity)
-        
+        setCartQuant(response.data.totalQuantity);
       } catch (error) {
         console.error('Error getting cart details:', error);
       }
@@ -55,10 +45,7 @@ const Header = () => {
     getCartDetails();
   }, [dispatch]);
 
-  let role = false;
-  if (user && user.roles && user.roles.length > 0) {
-    role = user.roles[0];
-  }
+  const role = user?.roles?.[0] || false;
 
   const handleAddBook = () => {
     nav('/uploadbook');
@@ -67,11 +54,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-<<<<<<< HEAD
-      const response = await fetch(import.meta.env.VITE_SERVER+`/api/logout`, {
-=======
       const response = await fetch(`/api/logout`, {
->>>>>>> e0107b6 (Solved CORS Errors and Routing Errors)
         method: 'POST',
         credentials: 'include',
       });
@@ -89,43 +72,37 @@ const Header = () => {
     }
   };
 
-  return (  
-    <>
-      <Toaster />
-      <header className='flex justify-between items-center px-3 border-b-3 border-[#080b37] header'>
-        <div className='logo font-bold text-3xl flex items-center'>
-          <Link to={'/'}>
-            <img
-              src='https://tse1.mm.bing.net/th?id=OIP.-B0WkXQi06OF6ZVp4T-06wHaHa&pid=Api&P=0&h=180'
-              className='w-[6rem] h-[6rem]'
-              alt='logo'
-            />
-          </Link>
-          <span className='text-[#080b37]'>
-            Book<span className='text-[#8ab1e5] poetsen-one-regular'>Haven</span>
-          </span>
+  const renderNavItems = () => (
+    <nav className='webrel list-none md:flex w-[250px] md:justify-between xl: lg:text-xl md:text-md sm:text-[10px] hidden'>
+      <Link to={'/'}>
+        <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150 '>
+          <span>Home</span>
+        </li>
+      </Link>
+      <Link to={'/home'}>
+        <li className='flex flex-col gap-1 justify-center items-center  border-b-4 border-transparent hover:border-blue-700 duration-150'>
+          <span>{role === 'admin' ? 'ManageBooks' : 'Books'}</span>
+        </li>
+      </Link>
+      {role !== 'admin' && (
+        <Link to={'/contact'}>
+          <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150'>
+            <span>Contact</span>
+          </li>
+        </Link>
+      )}
+    </nav>
+  );
+
+  const renderProfileMenu = () => (
+    <div>   
+      
+       <nav className='prof list-none flex w-[100px] md:w-[150px] justify-between relative'>
+      {role =="admin"?(
+        <div>
+          
         </div>
-
-        <nav className='webrel list-none md:flex w-1/5 md:justify-between xl: lg:text-xl md:text-md sm:text-[10px] hidden'>
-          <Link to={'/'}>
-            <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150 '>
-              <span>Home</span>
-            </li>
-          </Link>
-          <Link to={'/home'}>
-            <li className='flex flex-col gap-1 justify-center items-center  border-b-4 border-transparent hover:border-blue-700 duration-150'>
-              <span>Books</span>
-            </li>
-          </Link>
-          <Link to={'/contact'}>
-            <li className='flex flex-col gap-1 justify-center items-center border-b-4 border-transparent hover:border-blue-700 duration-150'>
-              <span>Contact</span>
-            </li>
-          </Link>
-        </nav>
-
-        <nav className='prof list-none flex w-[180px] justify-between relative'>
-        <Link to={'/cart'}>
+      ):(<Link to={'/cart'}>
   <li className='flex flex-col gap-1 justify-center items-center'>
     <span className='relative'>  <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -141,59 +118,91 @@ const Header = () => {
           d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
         />
       </svg>
-      <span className='absolute top-0 right-0 text-xs font-bold bg-blue-500 text-white px-1 rounded-full'>  {cartquant}
+      <span className='absolute top-0 right-0 text-xs font-bold bg-[#041438] text-white px-1 rounded-full'> 
       </span>
     </span>
   </li>
-</Link>
-          <Link>
-            <li className='flex gap-2 text-xl justify-center items-center duration-300' onClick={() => { setShowMenu(!showMenu); }}>
-              <span>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth='1.5'
-                  stroke='currentColor'
-                  className='w-8 h-8'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z'
-                  />
-                </svg>
-              </span>
-              <span>{user.username ? `${user.username}` : 'User'}</span>
-            </li>
-          </Link>
-          {showMenu && (
-            <div className='w-[100px] z-20 bg-[#3691ff] text-[#e3ecff] font-bold absolute top-8 rounded-md'>
-              <ul className='list-none flex flex-col flex-start justify-center'>
-                {login && role === 'user' ? (
-                  <>
-                    <li className='cursor-pointer px-3 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-t-md' onClick={() => handleLogout()}>Logout</li>
-                    <li className='cursor-pointer px-3 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-b-md'>Profile</li>
-                  </>
-                ) : login && role === 'admin' ? (
-                  <>
-                    <li className='cursor-pointer px-3 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-t-md' onClick={() => handleLogout()}>Logout</li>
-                    <li className='cursor-pointer px-2 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-b-md' onClick={() => { handleAddBook() }}>Add Book</li>
-                  </>
-                ) : (
-                  <>
-                    <Link to={'/login'}>
-                      <li className='cursor-pointer px-3 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-t-md' onClick={() => setShowMenu(false)}>Login</li>
-                    </Link>
-                    <Link to={'/signup'}>
-                      <li className='cursor-pointer px-3 py-3 hover:bg-[#c2d6fe] hover:text-[#3691ff] duration-300 ease-out w-full rounded-b-md' onClick={() => setShowMenu(false)}>Signup</li>
-                    </Link>
-                  </>
+</Link>)} 
+       
+      <Link>
+        <li className='flex gap-2 text-xl justify-center items-center duration-300' onClick={() => setShowMenu(!showMenu)}>
+          <span className='hidden md:block'>{user.username ? user.username : 'User'}</span>
+          <span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              strokeWidth='1.5'
+              stroke='currentColor'
+              className='w-8 h-8'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                d='M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z'
+              />
+            </svg>
+          </span>
+        </li>
+      </Link>
+      {showMenu && (
+        <div className='w-[100px] z-20 bg-[#183476] text-[#e3ecff] font-bold absolute top-10 right-0 rounded-md'>
+          <ul className='list-none flex flex-col flex-start justify-center'>
+            {login ? (
+              <>
+                <li className='cursor-pointer px-3 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-t-md' onClick={handleLogout}>
+                  Logout
+                </li>
+                {role === 'admin' && (
+                  <li className='cursor-pointer px-2 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-b-md' onClick={handleAddBook}>
+                    Add Book
+                  </li>
                 )}
-              </ul>
-            </div>
-          )}
-        </nav>
+                {role === "user"?(<li className='cursor-pointer px-3 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-b-md'>Profile</li>):(<div></div>)}
+                <li className='md:hidden block px-2 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-b-md'>{user.username ? user.username : 'User'}</li>
+              </>
+            ) : (
+              <>
+                <Link to={'/login'}>
+                  <li className='cursor-pointer px-3 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-t-md' onClick={() => setShowMenu(false)}>
+                    Login
+                  </li>
+                </Link>
+                <Link to={'/signup'}>
+                  <li className='cursor-pointer px-3 py-3 hover:bg-[#0d172e] duration-300 ease-out w-full rounded-b-md' onClick={() => setShowMenu(false)}>
+                    Signup
+                  </li>
+                </Link>
+                <li className='md:hidden block'>{user.username ? user.username : 'User'}</li>
+              </>
+            )}
+          </ul>
+        </div>
+      )}
+    </nav>
+    </div>
+
+  );
+  
+  const colorScheme = role === "admin"?(" text-black"):("text-black")
+  return (  
+    <>
+      <Toaster />
+      <header className={`flex justify-between items-center px-3 border-b-3 border-[#080b37] header ${colorScheme}`}>
+        <div className='logo font-bold md:text-3xl text-2xl flex items-center'>
+          <Link to={'/'}>
+            <img
+              src='https://tse1.mm.bing.net/th?id=OIP.-B0WkXQi06OF6ZVp4T-06wHaHa&pid=Api&P=0&h=180'
+              className='w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem]'
+              alt='logo'
+            />
+          </Link>
+          <span className='text-[#080b37] '>
+            Book<span className='text-[#8ab1e5] poetsen-one-regular'>Haven</span>
+          </span>
+        </div>
+        {renderNavItems()}
+        {renderProfileMenu()}
       </header>
     </>
   );
